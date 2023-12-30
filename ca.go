@@ -28,3 +28,26 @@ func ConfigureHTTPTransport(t *http.Transport) {
 func ConfigureDefault() {
 	ConfigureHTTPTransport(http.DefaultTransport.(*http.Transport))
 }
+
+// Use origin http transport
+func DefaultHTTPTransport(t *http.Transport) {
+	pool, err := x509.SystemCertPool()
+	if err != nil {
+		return
+	}
+
+	if t == nil {
+		return
+	}
+
+	if t.TLSClientConfig == nil {
+		t.TLSClientConfig = &tls.Config{RootCAs: pool}
+		return
+	}
+
+	t.TLSClientConfig.RootCAs = pool
+}
+
+func ResetHTTPTransport() {
+	DefaultHTTPTransport(http.DefaultTransport.(*http.Transport))
+}
