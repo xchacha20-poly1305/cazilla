@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/h1jk/cazilla"
-	"github.com/h1jk/cazilla/embed"
+	"github.com/xchacha20-poly1305/cazilla"
+	"github.com/xchacha20-poly1305/cazilla/embed"
 )
 
 func main() {

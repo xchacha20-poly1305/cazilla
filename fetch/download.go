@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/h1jk/cazilla"
+	"github.com/xchacha20-poly1305/cazilla"
 )
 
 // DownloadCSV downloads Mozilla provided Included CA Certificates (CSV with PEM of raw certificate data) and return its original CSV data.

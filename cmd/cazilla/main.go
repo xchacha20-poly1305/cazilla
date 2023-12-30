@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/h1jk/cazilla"
-	"github.com/h1jk/cazilla/embed"
-	"github.com/h1jk/cazilla/fetch"
+	"github.com/xchacha20-poly1305/cazilla"
+	"github.com/xchacha20-poly1305/cazilla/embed"
+	"github.com/xchacha20-poly1305/cazilla/fetch"
 )
 
 var (
