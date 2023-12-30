@@ -4,12 +4,18 @@ import (
 	"crypto/tls"
 	"crypto/x509"
 	"net/http"
+
+	"github.com/xchacha20-poly1305/cazilla/embed"
 )
 
 var (
 	// CA is a shared CA certificate pool.
 	CA = x509.NewCertPool()
 )
+
+func init() {
+	CA.AppendCertsFromPEM(embed.MozillaIncludedCAPEM)
+}
 
 // ConfigureHTTPTransport applies cazilla shared CA pool to the given transport. This method is null-safe.
 func ConfigureHTTPTransport(t *http.Transport) {
