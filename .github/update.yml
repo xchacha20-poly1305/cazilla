@@ -1,0 +1,31 @@
+name: Monthly Go Run
+
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+
+jobs:
+  run_go:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Get latest go version
+        id: version
+        run: |
+          echo ::set-output name=go_version::$(curl -s https://raw.githubusercontent.com/actions/go-versions/main/versions-manifest.json | grep -oE '"version": "[0-9]{1}.[0-9]{1,}(.[0-9]{1,})?"' | head -1 | cut -d':' -f2 | sed 's/ //g; s/"//g')
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ steps.version.outputs.go_version }}
+
+      - name: Update
+        run: |
+          go run -v ./cmd/cazilla -out embed/mozilla_included.pem
+          git config user.email "github-action@users.noreply.github.com"
+          git config user.name "GitHub Action"
+          git add .
+          git commit -m "Update CA list"
