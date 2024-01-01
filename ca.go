@@ -47,14 +47,27 @@ func ChangeTLSCA(c *tls.Config) {
 	c.RootCAs = CA
 }
 
-// Use origin http transport
-func DefaultHTTPTransport(t *http.Transport) {
+func DefaultTLSCA(c *tls.Config) {
+	if c == nil {
+		return
+	}
+
 	pool, err := x509.SystemCertPool()
 	if err != nil {
 		return
 	}
 
+	c.RootCAs = pool
+}
+
+// Use origin http transport
+func DefaultHTTPTransport(t *http.Transport) {
 	if t == nil {
+		return
+	}
+
+	pool, err := x509.SystemCertPool()
+	if err != nil {
 		return
 	}
 
