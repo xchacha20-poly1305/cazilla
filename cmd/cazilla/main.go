@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/xchacha20-poly1305/cazilla"
-	"github.com/xchacha20-poly1305/cazilla/embed"
 	"github.com/xchacha20-poly1305/cazilla/fetch"
 )
 
@@ -18,9 +17,6 @@ func main() {
 	flag.Parse()
 
 	log.Println("㊙ Loading embed CA list")
-	if !cazilla.CA.AppendCertsFromPEM(embed.MozillaIncludedCAPEM) {
-		log.Println("☠ Failed to load embed CA list")
-	}
 	cazilla.ConfigureDefault()
 
 	log.Println("✉ Downloading to", *out)

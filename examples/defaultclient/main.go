@@ -5,15 +5,9 @@ import (
 	"net/http"
 
 	"github.com/xchacha20-poly1305/cazilla"
-	"github.com/xchacha20-poly1305/cazilla/embed"
 )
 
 func main() {
-	// this loads pre-downloaded CA list from cazilla.
-	// note that the CA list may change after a while,
-	// so keep a frequent update if you are using this.
-	cazilla.CA.AppendCertsFromPEM(embed.MozillaIncludedCAPEM)
-
 	// apply cazilla shared CA pool to http.DefaultTransport,
 	// which is used by http.DefaultClient.
 	// if you are using custom http client, use cazilla.ConfigureHTTPTransport or configure it by yourself.

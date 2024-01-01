@@ -3,9 +3,8 @@ package cazilla
 import (
 	"crypto/tls"
 	"crypto/x509"
+	"log"
 	"net/http"
-
-	"github.com/xchacha20-poly1305/cazilla/embed"
 )
 
 var (
@@ -14,7 +13,12 @@ var (
 )
 
 func init() {
-	CA.AppendCertsFromPEM(embed.MozillaIncludedCAPEM)
+	// this loads pre-downloaded CA list from cazilla.
+	// note that the CA list may change after a while,
+	// so keep a frequent update if you are using this.
+	if !CA.AppendCertsFromPEM(MozillaIncludedCAPEM) {
+		log.Fatal("☠ Failed to load CA list")
+	}
 }
 
 // ConfigureHTTPTransport applies cazilla shared CA pool to the given transport. This method is null-safe.
