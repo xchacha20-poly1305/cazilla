@@ -1,4 +1,5 @@
 # cazilla
+
 An alternative CA list solution. Inspired by [SagerNet](https://github.com/SagerNet/SagerNet).
 
 ---
@@ -8,10 +9,10 @@ Cazilla is based on [Mozilla CA Certificate Program](https://wiki.mozilla.org/CA
   
 ## Examples
 
-See [examples](https://github.com/H1JK/cazilla/tree/master/examples).
+See [examples](./examples).
 
 ## Credits
 
 This includes Included CA Certificates (CSV with PEM of raw certificate data) provided by Mozilla.  
 Users must agree [CCADB Data Usage Terms](https://www.ccadb.org/rootstores/usage#ccadb-data-usage-terms) before use.  
-Code parts are licensed under [MIT License](https://github.com/H1JK/cazilla/blob/master/LICENSE).
+Code parts are licensed under [MIT License](./LICENSE).
