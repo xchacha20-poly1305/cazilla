@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/xchacha20-poly1305/cazilla"
+	"github.com/xchacha20-poly1305/cazilla/cautil"
 	"github.com/xchacha20-poly1305/cazilla/fetch"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	flag.Parse()
 
 	log.Println("㊙ Loading embed CA list")
-	cazilla.ConfigureDefault()
+	cautil.ConfigureDefault()
 
 	log.Println("✉ Downloading to", *out)
 

@@ -4,14 +4,14 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/xchacha20-poly1305/cazilla"
+	"github.com/xchacha20-poly1305/cazilla/cautil"
 )
 
 func main() {
 	// apply cazilla shared CA pool to http.DefaultTransport,
 	// which is used by http.DefaultClient.
 	// if you are using custom http client, use cazilla.ConfigureHTTPTransport or configure it by yourself.
-	cazilla.ConfigureDefault()
+	cautil.ConfigureDefault()
 
 	req, _ := http.NewRequest(http.MethodGet, "https://gstatic.com/generate_204", nil)
 	response, err := http.DefaultClient.Do(req)
