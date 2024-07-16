@@ -19,8 +19,8 @@ jobs:
       - name: Update
         run: |
           go run -v ./cmd/cazilla -out mozilla_included.pem
-          git config user.email "github-action@users.noreply.github.com"
-          git config user.name "GitHub Action"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
           git add .
           git commit -m "Update CA list" || true
           git push origin master
