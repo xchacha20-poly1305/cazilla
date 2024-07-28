@@ -12,5 +12,6 @@ var systemRoots *x509.CertPool
 
 // UpdateRootCA override the root ca in crypto/x508.systemRoots
 func OverrideRootCA() {
+	_, _ = x509.SystemCertPool()
 	systemRoots = cazilla.CA
 }
